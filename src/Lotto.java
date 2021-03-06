@@ -14,10 +14,35 @@ public class Lotto {
     }
 
     public void trekking() {
-        // array lottogetallen en bonusgetal trekken en afdrukken met for-lus
+        // array lottogetallen opvullen en afdrukken met for-lus
+        lottogetallen[0] = random.nextInt(45) + 1;
+        List<Integer> lottoList = Arrays.asList(lottogetallen);
+        Integer nieuwGetal;
+
+        System.out.print("De lottogetallen:  " + lottogetallen[0] + "  ");
+        for (int i = 1; i < lottogetallen.length; i++) {
+            nieuwGetal = random.nextInt(45) + 1;
+            while (lottoList.contains(nieuwGetal)) {
+                nieuwGetal = random.nextInt(45) + 1;
+            }
+            lottogetallen[i] = nieuwGetal;
+            System.out.print(nieuwGetal + "  ");
+        }
+
+        bonusgetal = random.nextInt(45) + 1;
+        while (lottoList.contains(bonusgetal)) {
+            bonusgetal = random.nextInt(45) + 1;
+        }
+        System.out.println("  bonusgetal: " + bonusgetal);
     }
 
     public void sorteer() {
-        // array lottogetallen sorteren en afdrukken samen met bonusgetal
+        Integer kopie[] = lottogetallen.clone();  // originele rij blijft behouden
+        Arrays.sort(kopie);
+        System.out.print("In rekenkundige volgorde:  ");
+        for (Integer lottogetal : kopie) {
+            System.out.print(lottogetal + "  ");
+        }
+        System.out.println("  bonusgetal: " + bonusgetal);
     }
 }
